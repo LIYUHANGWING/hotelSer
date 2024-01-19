@@ -1,0 +1,15 @@
+C:\workObject\CsharpT1\CsharpT1\bin\Debug\net6.0\CsharpT1.exe
+C:\workObject\CsharpT1\CsharpT1\bin\Debug\net6.0\CsharpT1.deps.json
+C:\workObject\CsharpT1\CsharpT1\bin\Debug\net6.0\CsharpT1.runtimeconfig.json
+C:\workObject\CsharpT1\CsharpT1\bin\Debug\net6.0\CsharpT1.dll
+C:\workObject\CsharpT1\CsharpT1\bin\Debug\net6.0\CsharpT1.pdb
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\CsharpT1.csproj.AssemblyReference.cache
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\CsharpT1.GeneratedMSBuildEditorConfig.editorconfig
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\CsharpT1.AssemblyInfoInputs.cache
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\CsharpT1.AssemblyInfo.cs
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\CsharpT1.csproj.CoreCompileInputs.cache
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\CsharpT1.dll
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\refint\CsharpT1.dll
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\CsharpT1.pdb
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\CsharpT1.genruntimeconfig.cache
+C:\workObject\CsharpT1\CsharpT1\obj\Debug\net6.0\ref\CsharpT1.dll

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    
+
+    <div id="stest201">
+   
+    <p style="float: right">
+        
+    </p>
+    <div id="single201">
+           <div> <span id="roomnum201"> 201</span>&nbsp;&nbsp;<span>大床房B</span></div>
+           
+           <div id="cname201">  </div>
+           <script>
+            $(function(){
+                let na=localStorage.getItem('clientN')
+                if(na=='null'){
+                    console.log(na)
+                    na=" "
+                    $("#stest201").css("background"," rgb(24, 164, 24)") 
+                }       
+                 $("#cname201").text(na)
+                 let keyid=localStorage.getItem('keyid')
+                console.log(keyid)
+            })
+           </script>
+            <span class="vh" id="lock201"  data-bindattr-431="431" title="锁房">锁</span>
+            <style>
+                #lock201{
+                    display: none;
+                }
+                </style>
+
+            <span class="vh" data-bindattr-432="432" id="201source" title="预抵">散</span>
+           
+    </div>
+    
+    <ul class="flags clearfix roomCell">
+      
+        </script><script id="metamorph-857-end" type="text/x-placeholder"></script>
+        <script id="metamorph-848-end" type="text/x-placeholder"></script>
+    </ul>
+    <script id="metamorph-843-end" type="text/x-placeholder"></script>
+</div>
+</div>
+<style>
+  
+    </style>
+    <div class="footer">
+                          
+            </div>
+       
+        <div  id="PopFrame201">
+            <div id="realPop201">
+                <span>
+                    <div id="poproomnum201">201</div>
+                    <div id="popcname201"></div>
+                    <style>
+                        #poproomnum201{
+                            font-size: x-large;
+                            font-style: italic;
+                            color:  #FF9c00;
+                        }
+                        #realPop201{
+                            padding: 20px;
+                        }
+                        #popcname201{
+                            font-size: large;
+                            font-style: oblique;
+                            color: #14c52c;
+                        }  
+                    </style>
+
+                    <div id="clientName201"></div>
+                    <div></div>
+                </span>
+                <span>
+                    <div>
+                        <div id="poptopbtn201"><span>
+                            <button id="load201" class="popbtn" >登记</button>  
+                            <script>
+                                $(document).ready(function(){
+                                $("#load201").click(function(){  
+                                     window.open("regPage.html");  
+                                     $("#stest201").css("background"," rgb(103, 99, 213)") 
+                                 });
+                                })
+
+
+                                $("#person201").click(function(){
+                                let roomNum=$("#roomnum201").text();
+                                    window.localStorage.setItem('roomNum',roomNum)  
+                                    let keyid=localStorage.getItem('keyid')
+                                    console.log(keyid)
+                                    window.localStorage.setItem('keyid',keyid) 
+                                     window.open("PersonalP.html");   
+                                 });
+
+
+                                 $("#clear201").click(function(){
+                                    $("#stest201").css("background"," rgb(24, 164, 24)")
+                                })
+                                $("#slock201").click(function(){
+                                    $("#lock201").css("display","inline")
+                                })
+                                $("#ulock201").click(function(){
+                                    $("#lock201").css("display","none")
+                                })
+                                $("#setout201").click(function(){
+                                    $("#stest201").css("background","#404040")
+                                    window.localStorage.setItem('clientN','null')
+                                })
+                                $(function(){
+                                     let na=localStorage.getItem('clientN')
+                                    if(na==='null'){
+                                          na=" "
+                                         }       
+                                     $("#cname201").text(na)
+                                     $("#popcname201").text(na)
+                                     $("#clientName201")
+                                   let keyid=localStorage.getItem('keyid')
+                                 console.log(keyid)
+                                })
+
+                                $("#pcount201").click(function(){ 
+                                    let na=localStorage.getItem('clientN')
+                                    window.localStorage.setItem('clientN',na)
+                                    window.open("pcount.html");
+                                 });
+
+                            </script>
+                        </a></span>
+                        <span> <button id="person201" class="popbtn" >详单</button>  
+                            
+                               
+                                 </span><span>
+                                    <button id="pcount201" class="popbtn">账单</button>  
+                           
+                                 </span>
+                                 <span><button id="clear201" class="popbtn">置净</button></div><div><button id="slock201" class="popbtn">锁房</button>&nbsp;<button id="ulock201" class="popbtn">解锁</button>&nbsp;<button id="setout201" class="popbtn">退房</button></div>
+                            
+                        </span>
+                    </div>
+                    <div></div>
+                </span>
+            </div>
+            <div>
+
+       
+            
+        </div> 
+
+<style>
+    #PopFrame201{
+        display: none;
+        width: 380px;
+        height: 230px;
+        background-color: rgb(14, 67, 100);
+        z-index: 3;
+        position: absolute;
+    }
+    .popbtn201{
+            width: 60px;
+            height:40px;
+            border-radius: 20px;
+            color: #d06f19;
+            font-weight: 700;
+            border-style:hidden;
+            background-color: #ede7ef;
+    }
+    #poptopbtn201{
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    #cname201{
+        height: 30px;
+    }
+    #stest201{
+        margin-bottom: 7px;
+        width: 140px;
+        height: 78px;
+        background-color:rgb(62, 210, 79);
+        border-style: solid;
+        border-width: 3px;
+        border-color: #fff;
+        z-index: 1;
+        display:flex;
+        margin-bottom:7px;
+        margin-right: 5px;
+        
+    }
+    #ember201{
+        position:relative;
+        width: 140px;
+        height: 78px;
+        
+        
+    }
+    #single201{
+        color: #fff;
+        padding: 1px,4px,4px,1px;
+    }
+</style>
+<script>
+         $("#stest201").mouseover(function(){
+                $("#PopFrame201").css({"display":"block"})
+            })
+
+        $("#stest201").mouseout(function(){
+            $("#PopFrame201").css({"display":"none"})
+        })
+        $("#PopFrame201").mouseover(function(){
+                $("#PopFrame201").css({"display":"block"})
+            })
+        $("#PopFrame201").mouseout(function(){
+                $("#PopFrame201").css({"display":"none"})
+            })
+     $(function(){
+        let keyid=localStorage.getItem('keyid')
+        console.log(keyid)
+                $.ajax({
+                    type:'get',
+                    url :'http://127.0.0.1:3007/api/upcost',
+                    data:{
+                        id:keyid
+                    },
+                    success:function(result){
+                        console.log(result) 
+                       if(result.data.source!='散客'){
+                        $("#201source").text('佣')
+                       }
+                    },
+                    error:function(){
+                        console.log(res)  
+                    }
+                })  
+            })
+
+            
+</script>
+    
+</style>
+
+
+    <div id="stest209">
+    <p style="float: right">      
+    </p>
+    <div id="single209">
+           <div> <span id="roomnum209"> 209</span>&nbsp;&nbsp;<span>大床房B</span></div>   
+       <div id="cname209">  </div>
+       <script>
+        $(function(){
+            let na=localStorage.getItem('clientN')
+            if(na=='null'){
+                console.log(na)
+                na=" "
+                $("#stest209").css("background"," rgb(24, 164, 24)") 
+            }       
+             $("#cname209").text(na)
+             let keyid=localStorage.getItem('keyid')
+             
+            console.log(keyid)
+        })
+       </script>
+        <span class="vh" id="lock209"  data-bindattr-431="431" title="锁房">锁</span>
+        <style>
+            #lock209{
+                display: none;
+            }
+            </style>
+        <span class="vh" data-bindattr-432="432" id="209source" title="预抵">散</span>
+       
+</div>
+
+<ul class="flags clearfix roomCell">
+  
+    </script><script id="metamorph-857-end" type="text/x-placeholder"></script>
+    <script id="metamorph-848-end" type="text/x-placeholder"></script>
+</ul>
+<script id="metamorph-843-end" type="text/x-placeholder"></script>
+</div>
+</div>
+<style>
+#cname209{
+    height: 30px;
+}
+#stest209{
+    margin-bottom: 7px;
+    width: 140px;
+    height: 78px;
+    background-color:rgb(39, 219, 69);
+    border-style: solid;
+    border-width: 3px;
+    border-color: #fff;
+    margin-bottom:9px;
+      z-index: 1;
+    display:flex;
+    position:relative;
+}
+#ember209{
+    
+    width: 140px;
+    height: 78px;
+    
+    margin-right: 7px;
+  
+}
+#single209{
+    color: #fff;
+    padding: 1px,4px,4px,1px;
+}
+</style>
+<div class="footer">                   
+        </div>
+    <!--弹出框-->
+    <div  id="PopFrame209">
+        <div id="realPop209">
+            <span>
+                <div id="poproomnum209">209</div>
+                <div id="popcname209"></div>
+                <style>
+                    #poproomnum209{
+                        font-size: x-large;
+                        font-style: italic;
+                        color:  #FF9c00;
+                    }
+                    #realPop209{
+                        padding: 20px;
+                    }
+                    #popcname209{
+                        font-size: large;
+                        font-style: oblique;
+                        color: #14c52c;
+                    }  
+                </style>
+
+                <div id="clientName209"></div>
+                <div></div>
+            </span>
+            <span>
+                <div>
+                    <div id="poptopbtn209"><span>
+                        <button id="load209" class="popbtn" >登记</button>  
+                        <script>
+                            $(document).ready(function(){
+                            $("#load209").click(function(){  
+                                 window.open("regPage.html");  
+                                 $("#stest209").css("background"," rgb(103, 99, 213)") 
+                             });
+                            })
+                        </script>
+                    </a></span>
+                    <span> <button id="person209" class="popbtn" >详单</button>  
+                        <script>
+                            $("#person209").click(function(){
+                            let roomNum=$("#roomnum209").text();
+                                window.localStorage.setItem('roomNum',roomNum)  
+                                let keyid=localStorage.getItem('keyid')
+                                console.log(keyid)
+                                window.localStorage.setItem('keyid',keyid) 
+                                 window.open("PersonalP.html");   
+                             });
+                             </script>
+                             </span><span>
+                                <button id="pcount209" class="popbtn">账单</button>  
+                        <script>
+                            $("#pcount209").click(function(){ 
+                                let na=localStorage.getItem('clientN')
+                                window.localStorage.setItem('clientN',na)
+                                window.open("pcount.html");
+                             });
+                             </script>
+                             </span>
+                             <span><button id="clear209" class="popbtn">置净</button></div><div><button id="slock209" class="popbtn">锁房</button>&nbsp;<button id="ulock209" class="popbtn">解锁</button>&nbsp;<button id="setout209" class="popbtn">退房</button></div>
+                        <script>
+                            $("#clear209").click(function(){
+                                $("#stest209").css("background"," rgb(24, 164, 24)")
+                            })
+                            $("#slock209").click(function(){
+                                $("#lock209").css("display","inline")
+                            })
+                            $("#ulock209").click(function(){
+                                $("#lock209").css("display","none")
+                            })
+                            $("#setout209").click(function(){
+                                $("#stest209").css("background","#404040")
+                                window.localStorage.setItem('clientN','null')
+                            })
+                            $(function(){
+                                 let na=localStorage.getItem('clientN')
+                                if(na==='null'){
+                                      na=" "
+                                     }       
+                                 $("#cname209").text(na)
+                                 $("#popcname209").text(na)
+                                 $("#clientName209")
+                               let keyid=localStorage.getItem('keyid')
+                             console.log(keyid)
+                            })
+                        </script>
+                    </span>
+                </div>
+                <div></div>
+            </span>
+        </div>
+        <div>
+
+        </div>   
+    </div> 
+<style>
+#PopFrame209{
+    display: none;
+    width: 380px;
+    height: 230px;
+    background-color: rgb(14, 67, 100);
+    z-index: 3;
+}
+.popbtn209{
+        width: 60px;
+        height:40px;
+        border-radius: 20px;
+        color: #d06f19;
+        font-weight: 700;
+        border-style:hidden;
+        background-color: #ede7ef;
+}
+#poptopbtn209{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+</style>
+<script>
+     $("#stest209").mouseover(function(){
+            $("#PopFrame209").css({"display":"block"})
+        })
+
+    $("#stest209").mouseout(function(){
+        $("#PopFrame209").css({"display":"none"})
+    })
+    $("#PopFrame209").mouseover(function(){
+            $("#PopFrame209").css({"display":"block"})
+        })
+    $("#PopFrame209").mouseout(function(){
+            $("#PopFrame209").css({"display":"none"})
+        })
+
+ $(function(){
+    let keyid=localStorage.getItem('keyid')
+    console.log(keyid)
+            $.ajax({
+                type:'get',
+                url :'http://127.0.0.1:3007/api/upcost',
+                data:{
+                    id:keyid
+                },
+                success:function(result){
+                    console.log(result) 
+                   if(result.data.source!='散客'){
+                    $("#209source").text('佣')
+                   }
+
+                },
+                error:function(){
+                    console.log(res)  
+                }
+            })  
+        })      
+</script>
+</style>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人账单</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../boot/css/bootstrap.min.css">
+</head>
+<script src="../src/jquery.min.js"> </script>
+<body >
+    <div class="tabContainer">
+        <ul class="tabNav">
+            <li class="selected" data-ember-action="7"><a href="javascript:;" data-target="#divGuestFolio">宾客详单</a></li>
+            <li data-ember-action="8"><a href="javascript:;" data-target="#divGuestBillDetail">账务明细</a></li>
+            <li data-ember-action="9"><a href="javascript:;" data-target="#divGuestGuaranteeDetail">预授权管理</a></li>
+            <li data-ember-action="10"><a href="javascript:;" data-name="aNextLogList" data-target="#divNextLogList">日志<span class="topArrow"></span></a></li>
+        </ul>
+        <!--最上导航栏-->
+        <style>
+            .tabNav>li{
+                display: inline;
+            }
+            .tabNav{
+                font-weight: 700;
+                text-align: center;
+                border-style: solid;
+                border-color: yellow;
+                background-color: aquamarine;
+            }
+            a{
+                text-decoration: none;
+            }        
+        </style>
+    <div id="fdiv">
+        <span class="topFont">
+            状态：
+        </span>
+        <span>
+           
+        </span>
+        <span class="topFont" >
+            相关按钮
+        </span>
+        <style>.topFont{
+            font-size: larger;
+            color: rgb(191, 108, 6);
+        }
+            </style>
+    </div>
+    <div id="Sediv">
+        <div class="Mweight"  id="upMeg">入住人信息</div>
+        <div>    <span>客人姓名：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="sname">&nbsp;&nbsp;&nbsp;&nbsp;
+        <span >客人性别：</span>
+        <span id="sagender"></span></div>
+        <div> <span>联系方式：</span>
+        <span id="sphone"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>居民身份证：</span>
+        <span id="scardid"></span>  </div>
+        <Span>户口所在地:</Span>
+        <span id="city"></span>
+    </div>
+    <style id="Sediv">
+        #upMeg{
+            color: #5b369c;
+        }
+        #Sediv{
+            color: #bf7213;
+            font-size: x-large;
+            border-color:rgb(36, 92, 147) ;
+            border-style: solid;
+            border-radius: 20px;
+            font-style: italic;
+            width: 1300px;
+        }
+    </style>
+    <script>   
+    </script>
+    <div id="costOrigin">
+        <span  class="Mweight">客源信息:</span>&nbsp;&nbsp;
+        <span id="ssource"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="changeSource">更改客源</button>
+        <style>
+            #costOrigin{
+                border-style:solid;
+                width: 1300px;
+                height: 57px;
+                font-size:x-large;
+                color: #820909;
+                border-radius: 20px;
+            }
+            #changeSource{
+                background-color: #43d41f;
+                border-radius: 20px;
+                border-color: aliceblue;
+              
+            }
+        </style>
+    </div>
+
+    <div id="roomInfo">
+        <div id="clientM" class="Mweight">
+            客房信息
+        </div>
+        <style>
+            #clientM{
+                font-weight: 600;
+                color: #c79d12;
+                font-size: x-large;
+            }
+        </style>
+
+   <div  class="sMessage">
+
+        <div ><span>房间号：</span>
+        <span  id="sRoomNum"></span>
+        </div>
+        <span  >房间类型：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id=""></span>
+        <span>房间价格：</span>
+        <span   id="payment"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>入住时间：</span>
+        <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>离店时间:</span>&nbsp;
+        <span id="poutdate"></span>
+        </div>
+    </div>
+
+    <style>
+         #roomInfo{
+            border-color:rgb(175, 199, 21) ;
+            border-style: solid;
+            font-size: larger;
+            width: 1300px;
+            border-radius: 20px;
+        }
+        .sMessage{
+        
+                width: 1500px;
+                height: 57px;
+                font-size:x-large;
+                color: #db8e31;
+                font-style: oblique;
+               
+                height: 100px;
+             
+                border-radius: 20px;
+        }
+
+    </style>
+    <div id="remarks" >
+    <div>
+        <div  id="qRemark">
+        <span >备注</span>
+        <span>(输入完毕后自动保存)</span>
+        </div>
+        <div>
+            <input type="text"  id="premark">
+        </div>
+        <style>
+            #premark{
+                width: 1300px;
+                height: 67px;
+                border-color: #8f925f;
+                border-radius: 20px;
+            }
+            #qRemark{
+                color: #4a98c9;
+                font-size: large;
+            }
+        </style>
+    </div>
+    </div> 
+    <script>
+    $(function(){
+        let keyid=localStorage.getItem('201id')
+        console.log(keyid)
+                $.ajax({
+                    type:'get',
+                    url :'http://127.0.0.1:3007/api/upcost',
+                    data:{
+                        id:keyid
+                    },
+                    success:function(result){
+                        console.log(result) 
+                        $("#sname").text(result.data.custname);
+                        $("#sphone").text(result.data.phoneNum)
+                        $("#scardid").text(result.data.cardid)
+                        $("#ssource").text(result.data.source)
+                        $("#payment").text(result.data.pay)
+                        $("#city").text(result.data.city) 
+                        $("#sRoomNum").text(result.data.roomNum)
+                    },
+                    error:function(){
+                        console.log(res)  
+                    }
+                })  
+            })
+
+    
+    </script>
+</div> 
+</body>
+</html>

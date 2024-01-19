@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../boot/css/bootstrap.min.css">    
+    
+</head>
+<body>
+    <div>
+        
+    <span><button>回到主页</button></span><span><label for="">客户姓名：</label><span id="bigPcountname"></span></span>
+   
+</div>
+    <table class="table table-hover" class="table table-bordered">
+        <caption id="pcountName"></caption>
+        <tr> <th>缴费方式</th> <th>付款(单位:人民币)</th> <th>营业日</th> <th>房号</th> <th>合计金额(单位人民币)</th>
+        </tr>
+        <tr> <td id="payway1"></td> <td id="payment1"></td> <td id="indate"> </td> <td id="roomNum1"></td>  <td id="payall"></td>     </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+        <tr> <td></td>  <td></td>  <td></td>  <td></td>  <td></td> </tr>
+    </table> 
+    <script>
+        $(function(){
+            let qa=localStorage.getItem('201id')
+            console.log(qa)
+            $("#bigPcountname").text(qa)
+
+            $.ajax({
+                type:'GET',
+                contentType:'application/x-www-form-urlencoded',
+                url :'http://127.0.0.1:3007/api/getname',
+                data:{
+                    custname:qa         
+                },
+               success:function(results){
+                console.log(results)
+                $("#payway1").text(results.data.payway)
+                $("#payment1").text(results.data.pay)
+                $("#roomNum1").text(results.data.roomNum)
+                $("#payall").text(results.data.pay)
+                $("#indate").text(results.data.indate)
+            }
+            })
+        })
+    </script>
+    <style>
+        tr{
+            height: 50px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+          
+    
+</body>
+</html>

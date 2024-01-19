@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery：在input上赋值，取值</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("#item_ids").val('tssssss');//赋值
+                //var x = $("#item_ids").val();//取值
+            });
+        });
+    </script>
+</head>
+
+<body>
+<form>
+    <input type="text" value="demo" id="item_ids"/>
+    <button type="button">点击</button>
+</form>
+</body>
+
+</html>

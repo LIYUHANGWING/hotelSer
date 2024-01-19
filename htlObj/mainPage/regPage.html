@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../boot/css/bootstrap.min.css">
+
+    <title>注册登录界面</title>
+</head>
+<body background="RedAlley.jpg">
+    <div class="container" id="mainR">
+    <div>
+    <div>
+
+        <span   id="sroomnum">房号：</span>
+        <span ><input type="text" id="roomnum"></span>
+      <style>
+        #sroomnum{
+            color: #caaa0c;
+        }
+        #roomnum{
+            width: 90px;
+        }
+        #mainR{
+            font-size: large;
+            font-weight: 900;
+        }
+        
+      </style>
+       
+        
+        <!--显示选中的房号-->
+
+    </div>
+    <!--界面设计-->
+    <div id="loadTect">
+        <style>
+            #loadTect{
+                color: #6e640e;
+            }
+        </style>
+        <div>入住信息</div>
+        <div>
+            <div><label for="">客源：</label><select name="" id="csource"><option value="">散客</option><option value="">美团</option><option value="">携程</option><option value="">飞猪</option></select></div>
+        <!--收款方式-->
+        <div><label for="">收款方式</label><select name="" id="cpayway">
+            <option value="">网上预付</option>
+            <option value="">现金</option>
+            <option value="">微信</option>
+            <option value="">支付宝</option>
+        </select></div> 
+        <div><label for="">收款额：</label><input id="cpay" type="  "></div> 
+        
+        <style>
+            #cpay{
+                width: 50px;
+            }
+        </style>
+        </div>
+            <span>证件类别：</span>
+            <span><select name="" id="">
+                <option value="">居民身份证</option>
+                <option value="">户口薄</option>
+                <option value="">护照</option>
+            </select></span>
+            <div><span>客人姓名：</span> <input type="text" id="regconame"> <span><button id="regCoBtn">入住</button>
+            </span></div>
+            <span></span>    
+            <!--传递姓名-->
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            </span>
+           
+        </div>
+        <div id="sCardid">
+            <style>
+                #sCardid{
+                    color: rgb(23, 123, 123);
+                }
+            </style>
+            <span>证件号码：</span> 
+            <span><input type="text" id="regcardid">
+            </span>
+        </div>
+          <div>
+            <div>
+            <span>客人国籍：</span>
+            <span><input type="text"></span>
+            <div><label for="">所属地区：</label>&nbsp;<input type="text" name="" id="city"><button id="fillin">填入</button></div>
+            <style>
+                #fillin{
+                    color:brown;
+                }
+                #regCoBtn{
+                    background-color: rgb(206, 210, 126);
+                    border-radius: 56px;
+                    color: rgb(197, 79, 49);
+                    font-weight: 800;
+                    
+                }
+            </style>
+           <div>
+            <span>客人住址：</span>
+            <span><input id="city" type="text"></span>
+           </div>
+           <div>
+            <span>联系电话：</span><span>&nbsp;<input type="text" id="regphoneNum"></span>
+           </div>
+           <div><label for="" >备注：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><input type="text" id="remarks">
+           <style>
+            #remarks{
+                width: 400px;
+                height: 40px;
+            }
+           </style>
+     </div>
+    </div>
+    <!--链接数据库--><script>    
+    $(function(){
+        $("#fillin").on('click',function(){
+            let cardid=$("#regcardid").val()
+            let newCid=cardid.substring(0,6)
+            if(cardid.length!=18){
+                alert('身份证格式错误')
+            }
+            else{      
+            $.ajax({
+                type:'GET',
+                contentType:'application/x-www-form-urlencoded',
+                url :'http://127.0.0.1:3007/api/getcity',
+                data:{
+                    "id":newCid            
+                },
+               success:function(result){
+                $("#city").val(result.data.area)
+            }
+            })
+         } 
+        })
+    })
+    $(function(){
+            $('#regCoBtn').on('click',function(){
+        var date = new Date();
+    //年 getFullYear()：四位数字返回年份
+        var year = date.getFullYear();  //getFullYear()代替getYear()
+    //月 getMonth()：0 ~ 11
+        var month = date.getMonth() + 1;
+    //日 getDate()：(1 ~ 31)
+       var day = date.getDate();
+    //时 getHours()：(0 ~ 23)
+      var hour = date.getHours();
+    //分 getMinutes()： (0 ~ 59)
+      var minute = date.getMinutes();
+    //秒 getSeconds()：(0 ~ 59)
+       var second = date.getSeconds();
+    var time =   year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second);
+         function addZero(s) {
+             return s < 10 ? ('0' + s) : s;
+      }
+                let regroomnum=$("#roomnum").val()
+                let regcustname= $("#regconame").val()
+                let regcardid= $("#regcardid").val()
+                let regphoneNum= $("#regphoneNum").val()
+                let regcity=$("#city").val()
+                let regsource=$("#csource").find("option:selected").text()
+                let regpayway=$("#cpayway").find("option:selected").text()
+                let regpay=$("#cpay").val()
+                let regmarks=$("#remarks").val()
+                console.log(regmarks)
+                console.log(regsource)
+                console.log(regpayway)
+                console.log(time)
+
+                $.ajax({
+                    type:'POST',
+                    url :'http://127.0.0.1:3007/api/creguser',
+                    data:{
+                        custname:regcustname,
+                        cardid:regcardid,
+                        phoneNum:regphoneNum,
+                        roomNum:regroomnum,
+                        source:regsource,
+                        payway:regpayway,
+                        pay:regpay,
+                        city:regcity,
+                        remarks:regmarks,
+                        indate:time
+                    },
+                    success:function(results){
+                        console.log(results)
+                        alert("录入成功")
+                        
+                        if(results.status!==0){
+                            alert("录入失败")
+                        }
+                        
+                        let keyid=results.results.insertId;
+                        console.log(keyid)
+                        let tranRoomNum=regroomnum+'room'
+                        let tranId=regroomnum+'id'
+                        
+                        window.localStorage.setItem(tranId,keyid)
+                        window.localStorage.setItem(tranRoomNum,regcustname)   
+                    },
+                    error:function(){
+                        console.log(res)  
+                    }
+                })  
+                
+     //获取当前时间
+    
+            })
+        })
+  </script>
+  </div>
+</body>
+</html>
