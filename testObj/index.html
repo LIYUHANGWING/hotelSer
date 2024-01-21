@@ -3,19 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+   
+    
     <title>Pop-up Example</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
 
-<div class="fixed-box" id="fixedBox">
-    Hover over me
-    <div class="popup" id="popup">
-        This is the popup content
+<div class="ember201" class="smainBlock">      
+    <div id="stest201">
+    <p style="float: right"></p>
+    <div id="single201">
+        <div> <span id="roomnum201"> 201</span>&nbsp;&nbsp;<span>大床房B</span></div>
+           <div id="cname201"> </div>
+            <span class="vh" id="lock201"  title="锁房">锁</span>
+            <span class="vh"  id="201source" title="预抵">散</span>          
     </div>
+    <p class="" >&nbsp;&nbsp;</p>
 </div>
+</div>
+    <div class="footer">                 
+            </div>
+        <!--弹出框-->
+        <div  id="PopFrame201">
+            <div id="realPop201">
+                <span>
+                    <div class="poproomnum">201</div>
+                    <!-- <div id="popcname201"></div> -->
+                    
+                    
+                </span>
+                <div id="popcname201"  class="popCname">张三</div>
+                <span>
+                    <div  class="poptopbtn"  >
+                       <div >
+                        
+                          <button id="load201" class="popbtn" >登记</button>&nbsp;           
+                          <button id="person201" class="popbtn" >详单</button>&nbsp;                                 
+                          <button id="clear201" class="popbtn">置净</button>&nbsp;
+                          <button id="pcount201" class="popbtn">账单</button>
+                       </div>
+                       &nbsp;
+                        <div>
+                            <button id="slock201" class="popbtn">锁房</button>&nbsp;
+                            <button id="ulock201" class="popbtn">解锁</button>&nbsp;
+                            <button id="setout201" class="popbtn">退房</button>
+                        </div>
+                    </div>
+                                
+               </span>
+             </div>     
+           </div>            
+        </div> 
+<script>
+//更改固定框状态
+$(function(){
+    console.log("Document is ready!");
+             let id=1;
+                $.ajax({
+                    type:'GET',
+                    url :'http://127.0.0.1:3007/api/getroom',
+                    data:{
+                       id:1
+                    },
+                    success:function(result){
+                       console.log(result)
+                       //着色：10表示干净空，11表示干净有人，-10表示脏空-11表示脏有人
+                       if(result.data.status==10){
+                        $("#stest201").css("background"," rgb(12, 104, 15)") 
+                        $("#cname201").text(" ")
+                        $('#popcname201').text("")
+                       }
+                       else if(result.data.status==11){
+
+                        $("#cname201").text(result.data.users)
+                        $('#popcname201').text(result.data.users)
+                        $("#stest201").css("background"," rgb(103, 99, 213)") 
+                       }
+                       else if(result.data.status==-10){
+                        $("#cname201").text(" ")
+                        $('#popcname201').text("")
+                        $("#stest201").css("background"," #404040")
+                       }
+                       else if(result.data.status==-11){
+                        $("#cname201").text(result.data.user)
+                        $('#popcname201').text(result.data.users)
+                        $("#stest201").css("background"," #404040")
+                       }
+                    },
+                    error:function(){
+                        $("#cname201").text(" ")
+                        $('#popcname201').text("")
+                        console.log('获取错误')
+                    }
+
+                })
+            
+            })
+            
+            
+            //更改固定框状态- 将房间置干净
+               $("#clear201").click(function(){
+                $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:3007/api/uproom',
+                data: {
+                    id: 1,      
+                    status: 10
+                    
+                },
+                success: function (results) {
+                   
+                    console.log(results);                   
+                    if (results.status !== 0) {
+                        
+                        alert("录入失败");
+                    }
+                },
+                error: function () {
+                    console.log("第二个请求出错");
+                }
+             })
+            });
+            //锁房
+             $("#slock201").click(function(){
+                $("#lock201").css("display","inline")
+                                })
+                $("#ulock201").click(function(){
+                $("#lock201").css("display","none")
+                                })
+            //退房结账
+            $("#setout201").click(function(){
+                $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:3007/api/uproom',
+                data: {
+                    id: 1,      
+                    status: -10
+                    
+                },
+                success: function (results) {
+                   
+                    console.log(results);                   
+                    if (results.status !== 0) {
+                        
+                        alert("录入失败");
+                    }
+                    $("#stest201").css("background","#404040")
+                },
+                error: function () {
+                    console.log("第二个请求出错");
+                }
+             })
+
+
+                             
+             })
+
+            //入住
+            $(document).ready(function(){
+            $("#load201").click(function(){  
+                 window.open("regPage.html");  
+                // $("#stest201").css("background"," rgb(103, 99, 213)") 
+             });
+            })
+
+
+            //查看该房间入住客户信息
+            $("#person201").click(function(){
+                 let roomNum=$("#roomnum201").text();
+                    window.localStorage.setItem('roomNum',roomNum)  
+                    let keyid=localStorage.getItem('201id')
+                    console.log(keyid)
+                    window.localStorage.setItem('keyid',keyid) 
+                    window.open("PersonalP.html");   
+                });
+                                 
+                                 
+            //查看该房间入住信息账单
+            $("#pcount201").click(function(){ 
+                    let na=localStorage.getItem('201id')
+                    let countid='201id'
+                    window.localStorage.setItem(countid,na)
+                    window.open("pcount.html");
+                 });
+ 
+
+
+          //设置弹出框位置
+           $(document).ready(function () {
+            const $fixedBox = $('#stest201');
+            const $popup = $('#PopFrame201');
+           $fixedBox.on('mouseenter', function () {
+        // 显示弹出框
+          $popup.show();
+
+        // 设置弹出框位置，这里简单设置在固定框的下方
+        const offset = 80;
+        const rect = $fixedBox[0].getBoundingClientRect();
+        $popup.css({
+            top: rect.top + offset + 'px',
+            left: rect.left + 'px'
+        });
+    });
+
+    $fixedBox.on('mouseleave', function () {
+        // 隐藏弹出框
+        $popup.hide();
+    });
+
+    $popup.on('mouseenter', function () {
+        // 鼠标在弹出框上时，不隐藏弹出框
+        $popup.show();
+    });
+
+    $popup.on('mouseleave', function () {
+        // 鼠标离开弹出框时，隐藏弹出框
+        $popup.hide();
+    });
+});
+
+
+</script>
 <style>
-    .fixed-box {
+#lock201{
+      display: none;
+    }
+#cname201{
+    height: 30px;
+}
+#stest201{
+    margin-bottom: 7px;
+    width: 140px;
+    height: 78px;
+    background-color:rgb(12, 104, 15);
+    border-style: solid;
+    border-width: 3px;
+    border-color: #fff;
+}
+.ember201{
+position:relative;
+width: 140px;
+height: 78px;
+margin-bottom:9px;
+margin-right: 7px;
+z-index: 1;
+   
+}
+
+#single201{
+    color: #fff;
+    padding: 1px,4px,4px,1px;
+}
+
+
+.poproomnum{
+         font-size: x-large;
+         font-style: italic;
+         color:  #FF9c00;
+       
+ }
+#realPop201{
+         padding: 20px;
+}
+#popcname201{
+         font-size: large;
+         font-style: oblique;
+         color: #14c5     2c;
+ }
+ 
+ #PopFrame201{
+    display: none;
+    width: 380px;
+    height: 230px;
+    background-color: rgb(14, 67, 100);
+    position: absolute;
+    z-index: 3;
+}
+/* .popbtn201{
+        width: 60px;
+        height:40px;
+        border-radius: 20px;
+        color: #d06f19;
+        font-weight: 700;
+        border-style:hidden;
+        background-color: #ede7ef;
+}  */
+
+
+.poptopbtn{
+
+    
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.fixed-box {
     position: relative;
     width: 100px;
     height: 50px;
@@ -33,31 +315,13 @@
     padding: 10px;
     z-index: 1;
 }
+.popCname{
+    font-size:x-large;
+    font-style: italic;
+    color:#0f7a31;
+}
 
 </style>
-
-<script >
-    document.addEventListener('DOMContentLoaded', function () {
-    const fixedBox = document.getElementById('fixedBox');
-    const popup = document.getElementById('popup');
-
-    fixedBox.addEventListener('mouseenter', function () {
-        // 显示弹出框
-        popup.style.display = 'block';
-
-        // 设置弹出框位置，这里简单设置在固定框的下方
-        const rect = fixedBox.getBoundingClientRect();
-        const offset = 40;
-        popup.style.top = rect.top +offset + 'px';
-        popup.style.left = rect.left + 'px';
-    });
-
-    fixedBox.addEventListener('mouseleave', function () {
-        // 隐藏弹出框
-        popup.style.display = 'none';
-    });
-});
-
-</script>
 </body>
 </html>
+

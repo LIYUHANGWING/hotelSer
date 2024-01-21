@@ -442,8 +442,8 @@
             width: 380px;
             height: 230px;
             background-color: rgb(14, 67, 100);
-            position: absolute;
-            z-index: 3;
+            z-index: 4;
+            position: sticky;
         }
         .popbtn201{
                 width: 60px;
@@ -460,19 +460,20 @@
         }
     </style>
     <script>
-             $("#stest201").mouseover(function(){
+            $("#stest201").mouseover(function(){
                     $("#PopFrame201").css({"display":"block"})
-                })
+            })
     
             $("#stest201").mouseout(function(){
                 $("#PopFrame201").css({"display":"none"})
             })
             $("#PopFrame201").mouseover(function(){
                     $("#PopFrame201").css({"display":"block"})
-                })
+            })
             $("#PopFrame201").mouseout(function(){
                     $("#PopFrame201").css({"display":"none"})
-                })
+            })
+    
     
          $(function(){
             let keyid=localStorage.getItem('keyid')
@@ -672,7 +673,7 @@
       height: 78px;
        margin-bottom:9px;
        margin-right: 7px;
-       z-index: 1;
+       z-index: 0;
     }
     #stest202{
         margin-bottom: 7px;
